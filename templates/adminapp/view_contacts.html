@@ -1,0 +1,32 @@
+<!-- templates/adminapp/view_contacts.html -->
+{% extends 'Navbar/ProjectNavbar.html' %}
+{% load static %}
+
+<html>
+<head>
+    <title>Contact List</title>
+</head>
+<body>
+{% block body %}
+<div class="container text-center">
+  <div class="row">
+    <div class="col">
+      <h2>Contacts</h2>
+      <ul>
+        {% for contact in contacts %}
+          <li>
+            {{ contact.name }} - {{ contact.email }} - {{ contact.phone_number }} - {{ contact.address }}
+            <a href="{% url 'delete_contact' contact.pk %}" style="color: red; text-decoration: none; margin-left: 10px;">Delete</a>
+          </li>
+        {% endfor %}
+      </ul>
+      <br>
+      <a href="{% url 'add_contact' %}" style="display: inline-block; padding: 10px 20px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px; transition: background-color 0.3s;">
+        Back to Add Contact
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock %}
+</body>
+</html>
